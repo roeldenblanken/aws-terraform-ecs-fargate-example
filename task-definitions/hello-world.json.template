@@ -1,0 +1,48 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "memory": ${fargate_container_memory},
+    "cpu": ${fargate_container_cpu},
+    "networkMode": "awsvpc",
+    "portMappings": [
+      {
+        "containerPort": ${app_port},
+        "hostPort": ${app_port},
+		"protocol": "tcp"
+      }
+    ],
+	"environment": [
+		{
+			"name": "DB_ENDPOINT",
+			"value": "${db_endpoint}"
+		},
+		{
+			"name": "DB_USER",
+			"value": "${db_user}"
+		},
+		{
+			"name": "DB_BASE",
+			"value": "${db_base}"
+		},
+		{
+			"name": "DB_PORT",
+			"value": "${db_port}"
+		},
+		{
+			"name": "COLOR",
+			"value": "${color}"
+		},
+		{
+			"name": "BUILD_NUMBER",
+			"value": "${build_number}"
+		}
+	],
+	"secrets": [
+      {
+        "name": "DB_PASSWORD",
+        "valueFrom": "${db_password}"
+      }
+    ]
+  }
+]
