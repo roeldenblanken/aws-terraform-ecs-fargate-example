@@ -65,12 +65,12 @@ EOF
 
 data "aws_ami" "latest_aws_linux_2_ami" {
 	most_recent = true
-	owners 		= ["amazon"]
+	owners 	    = ["amazon"]
 
-	filter {
-		name   = "name"
-		values = ["amzn2-ami-hvm*"]
-	}
+    filter {
+      name   = "name"
+      values = ["amzn2-ami-hvm*"]
+    }
 
     filter {
        name   = "architecture"

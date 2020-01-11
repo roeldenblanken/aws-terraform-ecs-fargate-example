@@ -86,18 +86,18 @@ resource "aws_ecs_cluster" "ecs-cluster" {
 data "template_file" "ecs_crm_task_def_template" {
   template = "${file("../../task-definitions/hello-world.json.template")}"
   vars = {
-    name					 = "${local.my_name}-crm-container"
-    image		             = "${var.image}:${var.ecr_crm_image_version}"
+    name                     = "${local.my_name}-crm-container"
+    image                    = "${var.image}:${var.ecr_crm_image_version}"
     fargate_container_memory = var.fargate_container_memory
     fargate_container_cpu    = var.fargate_container_cpu
     app_port                 = var.app_port
-	db_endpoint				 = var.db_endpoint
-	db_user					 = var.db_user
-	db_password				 = var.db_password
-	db_base					 = var.db_base
-	db_port					 = var.db_port
-	color					 = var.color	
-	build_number			 = var.build_number	
+    db_endpoint              = var.db_endpoint
+    db_user                  = var.db_user
+    db_password	             = var.db_password
+    db_base                  = var.db_base
+    db_port                  = var.db_port
+    color                    = var.color
+    build_number             = var.build_number
   }
 }
 
@@ -177,8 +177,8 @@ CONTAINERDEFINITION
     Environment = "${var.env}"
     Region      = "${var.region}"
     Terraform   = "true"
-	image 		= "${var.image}:${var.ecr_crm_image_version}"
-	build		= "${var.build_number}"
+    image       = "${var.image}:${var.ecr_crm_image_version}"
+    build       = "${var.build_number}"
   }
 
 }

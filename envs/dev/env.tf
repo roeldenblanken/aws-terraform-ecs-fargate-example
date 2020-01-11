@@ -31,10 +31,10 @@ locals {
   fargate_container_memory  = "4096"
   fargate_container_cpu     = "1024"
   app_port                  = "8080"
-  database_name     		= "databaseblankia"
-  database_user 			= "admin"
+  database_name             = "databaseblankia"
+  database_user             = "admin"
   database_port             = "3306"
-  color						= "red"
+  color                     = "red"
 }
 
 # NOTE: You cannot use locals in the terraform configuration since terraform
@@ -79,17 +79,17 @@ module "env-def" {
   vpc_cidr_block            = "${local.vpc_cidr_block}"
   private_subnet_count      = "${local.private_subnet_count}"
   ecs_service_desired_count = "${local.ecs_service_desired_count}"
-  image					    = "${var.image}" 
-  build_number				= "${var.build_number}" 
+  image                     = "${var.image}"
+  build_number              = "${var.build_number}"
   ecr_crm_image_version     = "${local.ecr_crm_image_version}"
   fargate_container_memory  = "${local.fargate_container_memory}"
   fargate_container_cpu     = "${local.fargate_container_cpu}"
   app_port                  = "${local.app_port}"
   admin_workstation_ip      = "${var.admin_workstation_ip}"
-  database_name     		= "${local.database_name}"
-  database_user 			= "${local.database_user}"
-  database_password 		= data.aws_ssm_parameter.DB_PASSWORD.value
-  database_password_arn		= data.aws_ssm_parameter.DB_PASSWORD.arn
+  database_name             = "${local.database_name}"
+  database_user             = "${local.database_user}"
+  database_password         = data.aws_ssm_parameter.DB_PASSWORD.value
+  database_password_arn     = data.aws_ssm_parameter.DB_PASSWORD.arn
   database_port             = "${local.database_port}"
-  color           			= "${local.color}"
+  color                     = "${local.color}"
 }
